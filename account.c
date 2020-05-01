@@ -10,6 +10,13 @@ typedef struct Person{
     char privilege[3];
 } Person;
 
+typedef struct Account{
+    char accountType[15];
+    char username[31];
+    char password[31];
+    char privilegeLevel[3];
+} Account;
+
  char *str2md5(const char *str, int length) {
     int n;
     MD5_CTX c;
@@ -40,7 +47,7 @@ typedef struct Person{
 void login()
 {
 
-    char   line[200];
+    char line[200];
     Person persons[200];
     FILE  *read_file;
 
@@ -64,21 +71,17 @@ void login()
 
 }
 
-void signup(char* username, char* password, char* usertype)
+int signup(char* username, char* password, char* usertype, char* privilege)
 {
 FILE *fp;
-char* str = "string";
-
-char* str_8 = "3";
-int x = 10;
 fp=fopen("test.txt", "a");
 if(fp == NULL)
     exit(-1);
 
 char *hashedPassword = str2md5(password, strlen(password));
-fprintf(fp,"%-15s%-30s%-15s%-15s\n", username, usertype, str_8, hashedPassword);
+fprintf(fp,"%-15s%-30s%-15s%-15s\n", username, usertype, privilege, hashedPassword);
 fclose(fp);
-
+return 1;
 
 }
 

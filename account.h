@@ -8,5 +8,6 @@
  * It tells the compiler that the function exists somewhere.
  */
 void login();
+int signup(char* username, char* password, char* usertype, char* privilege);
 
 #endif /* FOO_DOT_H */

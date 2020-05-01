@@ -13,7 +13,7 @@ typedef struct Account{
     char accountType[15];
     char username[31];
     char password[31];
-    int privilegeLevel;
+    char privilegeLevel[3];
 } Account;
 
 void menu();
@@ -64,11 +64,29 @@ int main(void)
                     printf("Inavalid input. Please select a valid input.\n");
                     printf("Account types => | Doctor = 1 | | Patient = 2 | | Nurse = 3 | \n");
                     scanf("%d",&type);
+                    printf("Account type: ");
                 }
+                printf("%d",type);
+                if(type == 1){
+                    strcpy(account.accountType,"Doctor");
+                    strcpy(account.privilegeLevel,"1");
+                }else if(type == 2){
+                    strcpy(account.accountType,"Patient");
+                    strcpy(account.privilegeLevel,"2");
+                }else{
+                    strcpy(account.accountType,"Nurse");
+                    strcpy(account.privilegeLevel,"3");
+                }
+                type = 0;
                 printf("*** SELECT A PASSWORD ***\n");
                 printf("Password: ");
                 scanf("%s", account.password);
-                printf("Username is %s and password is %s. User type is %d",account.username,account.password,type);
+                if(signup(account.username, account.password, account.accountType, account.privilegeLevel)){
+                    printf("Account successfully created for %s under account type %s", account.username, account.accountType);
+                    printf("Login using the username and password you provided");
+                }else{
+                    printf("Account creation failed!! Try again.");
+                }
                 break;
 
             case 2:
