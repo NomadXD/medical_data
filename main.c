@@ -180,18 +180,35 @@ void mainMenu(void) {
 void optionsMenu(int status) {
 
     if(status == 1){
+
         printf("Options Menu\n");
         printf("1 - Add patient data\n");
         printf("2 - View patient data\n");
+        printf("3 - Log out\n");
 
     }else if (status == 2){
+
         printf("Options Menu\n");
+        printf("1 - View Medical data\n");
+        printf("2 - View Regsitered doctots\n");
+        printf("3 - Log out\n");
+
+    }else if (status == 3){
+
+        printf("Options Menu\n");
+        printf("1 - View Medical prescriptons\n");
+        printf("2 - View Regsitered doctots\n");
+        printf("3 - Back\n");
+
+    }else if (status == 4){
+
+        printf("Options Menu\n");
+        printf("1 - View Lab test prescriptons\n");
+        printf("2 - View Regsitered doctots\n");
+        printf("3 - Back\n");
+
     }
 
-    printf("Options Menu\n");
-    printf("1 - Difficulty\n");
-    printf("2 - Sound\n");
-    printf("3 - Back\n");
     printf("Please choose: ");
     scanf("%d",&choice2);
 
