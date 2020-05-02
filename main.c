@@ -139,24 +139,98 @@ void options(int status) {
 
     do {
         optionsMenu(status);
+        if(status == 1){
 
-        switch(choice2){
+            switch(choice2){
 
-            case 1:
-                printf("So difficult!\n");
-                break;
+                case 1:
+                    printf("doc!\n");
+                    break;
 
-            case 2:
-                printf("Beep!\n");
-                break;
+                case 2:
+                    printf("Beep!\n");
+                    break;
 
-            case 3:
-                break;
+                case 3:
+                    break;
 
-            default:
-                break;
+                default:
+                    printf("Invalid input\n");
+                    break;
+
+            }
+
+        }else if (status == 2){
+
+            switch(choice2){
+
+                    case 1:
+                        printf("pat!\n");
+                        break;
+
+                    case 2:
+                        printf("Beep!\n");
+                        break;
+
+                    case 3:
+                        break;
+
+                    default:
+                        printf("Invalid input\n");
+                        break;
+
+            }
+
+
+
+        }else if (status == 3){
+
+            switch(choice2){
+
+                    case 1:
+                        printf("pahr!\n");
+                        break;
+
+                    case 2:
+                        printf("Beep!\n");
+                        break;
+
+                    case 3:
+                        break;
+
+                    default:
+                        printf("Invalid input\n");
+                        break;
+
+            }
+
+
+        }else if (status == 4){
+
+            switch(choice2){
+
+                    case 1:
+                        printf("lab!\n");
+                        break;
+
+                    case 2:
+                        printf("Beep!\n");
+                        break;
+
+                    case 3:
+                        break;
+
+                    default:
+                        printf("Invalid input\n");
+                        break;
+
+            }
+
 
         }
+
+
+
 
     } while(choice2 != 3);
 
