@@ -89,8 +89,21 @@ int main(void)
                 }
                 break;
 
-            case 2:
-                options();
+            case 2: ;
+                char username_provided[31];
+                char password_provided[31];
+                printf("Provide your username and password\n");
+                printf("Username:");
+                scanf("%s",username_provided);
+                printf("Password:");
+                scanf("%s",password_provided);
+                if(login(username_provided, password_provided) == 1){
+                    printf("Welcome %s",username_provided);
+                }else if (login(username_provided, password_provided) == 2){
+                    printf("Invalid password for username %s",username_provided);
+                }else{
+                    printf("User with username %s does not exist",username_provided);
+                }
                 break;
 
             case 3:

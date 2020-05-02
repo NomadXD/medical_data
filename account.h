@@ -7,7 +7,7 @@
  * This is a function declaration.
  * It tells the compiler that the function exists somewhere.
  */
-void login();
+int login(char* username, char* password);
 int signup(char* username, char* password, char* usertype, char* privilege);
 
 #endif /* FOO_DOT_H */

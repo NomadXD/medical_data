@@ -44,30 +44,40 @@ typedef struct Account{
     return out;
 }
 
-void login()
+int login(char* username, char* password)
 {
 
     char line[200];
     Person persons[200];
+    int isValid = 0;
     FILE  *read_file;
 
     read_file = fopen("test.txt", "r");
     if (read_file == NULL)
         return -1;
 
-    printf("File successfully read \n");
+    Account account;
 
-    char *output = str2md5("hello", strlen("hello"));
-    printf("%s\n", output);
-
-    Person person;
+    char *comaparePassword = str2md5(password, strlen(password));
 
     while (fgets(line, sizeof(line), read_file) != NULL)
     {
-        sscanf(line,"%s%s%s%s",person.username, person.password, person.usertype, person.privilege);
-        printf("%s %s %s %s\n", person.username, person.password, person.usertype, person.privilege);
+        sscanf(line,"%s%s%s%s",account.username, account.accountType, account.privilegeLevel, account.password);
+        //if(!(strcmp(comaparePassword,account.password)) && !strcmp(username,account.username)){
+         //   isValid = 1;
+        //}
+
+        if(!strcmp(username,account.username)){
+            if(!(strcmp(comaparePassword,account.password))){
+                isValid = 1;
+            }else{
+                isValid = 2;
+            }
+        }
+
     }
     fclose(read_file);
+    return isValid;
 
 }
 
