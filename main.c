@@ -47,15 +47,15 @@ int main(void)
         mainMenu();
 
         switch(choice1) {
-            Account account;
-            int type;
-            case 1:
+            case 1:;
+                Account _account;
+                int type;
                 printf("Please provide the required details for registration\n");
                 printf("*** SELECT A USERNAME ***\n");
                 printf("Only alphanumeric characters and _ are allowed.\n");
                 printf("No spaces are allowed. Use _ for multiple words\n");
                 printf("Username: ");
-                scanf("%s",account.username);
+                scanf("%s",_account.username);
                 printf("*** SELECT AN ACCOUNT TYPE ***\n");
                 printf("Account types => | Doctor = 1 | | Patient = 2 | | Nurse = 3 | \n");
                 printf("Account type: ");
@@ -68,25 +68,26 @@ int main(void)
                 }
                 printf("%d",type);
                 if(type == 1){
-                    strcpy(account.accountType,"Doctor");
-                    strcpy(account.privilegeLevel,"1");
+                    strcpy(_account.accountType,"Doctor");
+                    strcpy(_account.privilegeLevel,"1");
                 }else if(type == 2){
-                    strcpy(account.accountType,"Patient");
-                    strcpy(account.privilegeLevel,"2");
+                    strcpy(_account.accountType,"Patient");
+                    strcpy(_account.privilegeLevel,"2");
                 }else{
-                    strcpy(account.accountType,"Nurse");
-                    strcpy(account.privilegeLevel,"3");
+                    strcpy(_account.accountType,"Nurse");
+                    strcpy(_account.privilegeLevel,"3");
                 }
                 type = 0;
                 printf("*** SELECT A PASSWORD ***\n");
                 printf("Password: ");
-                scanf("%s", account.password);
-                if(signup(account.username, account.password, account.accountType, account.privilegeLevel)){
-                    printf("Account successfully created for %s under account type %s", account.username, account.accountType);
+                scanf("%s", _account.password);
+                if(signup(_account.username, _account.password, _account.accountType, _account.privilegeLevel)){
+                    printf("Account successfully created for %s under account type %s", _account.username, _account.accountType);
                     printf("Login using the username and password you provided");
                 }else{
                     printf("Account creation failed!! Try again.");
                 }
+
                 break;
 
             case 2: ;
@@ -98,11 +99,15 @@ int main(void)
                 printf("Password:");
                 scanf("%s",password_provided);
                 if(login(username_provided, password_provided) == 1){
-                    printf("Welcome %s",username_provided);
+                    printf("Welcome %s .You have logged in as a doctor.\n",username_provided);
                 }else if (login(username_provided, password_provided) == 2){
-                    printf("Invalid password for username %s",username_provided);
+                    printf("Welcome %s .You have logged in as a patient.\n",username_provided);
+                }else if(login(username_provided, password_provided) == 3){
+                    printf("Welcome %s .You have logged in as a nurse.\n",username_provided);
+                }else if(login(username_provided, password_provided) == 4){
+                    printf("Invalid password for the username %s\n", username_provided);
                 }else{
-                    printf("User with username %s does not exist",username_provided);
+                    printf("Username %s is not registered. Register as a user first.\n",username_provided);
                 }
                 break;
 

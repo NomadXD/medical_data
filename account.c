@@ -3,18 +3,11 @@
 #include <string.h>
 #include <openssl/md5.h>
 
-typedef struct Person{
-    char username[31];
-    char password[127];
-    char usertype[15];
-    char privilege[3];
-} Person;
-
 typedef struct Account{
     char accountType[15];
     char username[31];
     char password[31];
-    char privilegeLevel[3];
+    char privilegeLevel[1];
 } Account;
 
  char *str2md5(const char *str, int length) {
@@ -48,7 +41,7 @@ int login(char* username, char* password)
 {
 
     char line[200];
-    Person persons[200];
+    //Account account[200];
     int isValid = 0;
     FILE  *read_file;
 
@@ -59,19 +52,19 @@ int login(char* username, char* password)
     Account account;
 
     char *comaparePassword = str2md5(password, strlen(password));
-
     while (fgets(line, sizeof(line), read_file) != NULL)
     {
-        sscanf(line,"%s%s%s%s",account.username, account.accountType, account.privilegeLevel, account.password);
-        //if(!(strcmp(comaparePassword,account.password)) && !strcmp(username,account.username)){
-         //   isValid = 1;
-        //}
+        char privilege[1];
+        sscanf(line,"%s%s%s%s",account.username, account.accountType, privilege, account.password);
 
         if(!strcmp(username,account.username)){
+            int temp = strcmp(comaparePassword,account.password);
+
             if(!(strcmp(comaparePassword,account.password))){
-                isValid = 1;
+                isValid = privilege[0] - '0';
+                break;
             }else{
-                isValid = 2;
+                isValid = 4;
             }
         }
 
@@ -89,7 +82,7 @@ if(fp == NULL)
     exit(-1);
 
 char *hashedPassword = str2md5(password, strlen(password));
-fprintf(fp,"%-15s%-30s%-15s%-15s\n", username, usertype, privilege, hashedPassword);
+fprintf(fp,"%-15s%-15s%-15s%-15s\n", username, usertype, privilege, hashedPassword);
 fclose(fp);
 return 1;
 
