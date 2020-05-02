@@ -64,7 +64,7 @@ int login(char* username, char* password)
                 isValid = privilege[0] - '0';
                 break;
             }else{
-                isValid = 4;
+                isValid = 5;
             }
         }
 
