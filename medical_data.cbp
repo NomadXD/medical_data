@@ -43,6 +43,10 @@
 		</Unit>
 		<Unit filename="account.h" />
 		<Unit filename="config.txt" />
+		<Unit filename="data.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="data.h" />
 		<Unit filename="demo.c">
 			<Option compilerVar="CC" />
 		</Unit>

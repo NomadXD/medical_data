@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "account.h"
+#include "data.h"
 
 typedef struct Person{
     char name[20];
@@ -15,6 +16,18 @@ typedef struct Account{
     char password[31];
     char privilegeLevel[3];
 } Account;
+
+typedef struct Record{
+    char username[31];
+    char first_name[31];
+    char last_name[31];
+    char nic[15];
+    char telephone[15];
+    char sickness[31];
+    char sickness_detail[63];
+    char medical_prescription[63];
+    char test_prescription[63];
+} Record;
 
 void menu();
 void mainMenu();
@@ -143,12 +156,38 @@ void options(int status) {
 
             switch(choice2){
 
-                case 1:
+                case 1:;
+                    Record record;
                     printf("doc!\n");
+                    printf("Please provide the required details.....\n");
+                    printf("Username of the patient: ");
+                    scanf("%s",record.username);
+                    printf("First Name of the patient: ");
+                    scanf("%s", record.first_name);
+                    printf("Last name of the patient:");
+                    scanf("%s", record.last_name);
+                    printf("NIC of the patient:");
+                    scanf("%s",record.nic);
+                    printf("Telephone number:");
+                    scanf("%s",record.telephone);
+                    printf("Sickness:");
+                    scanf("%s",record.sickness);
+                    printf("Sickness details:");
+                    scanf("%s",record.sickness_detail);
+                    printf("Medical prescription:");
+                    scanf("%s", record.medical_prescription);
+                    printf("Test prescription:");
+                    scanf("%s",record.test_prescription);
+                    if(create_medical_report(record.username,record.first_name,record.last_name,record.nic,record.telephone,record.sickness,record.sickness_detail,record.medical_prescription,record.test_prescription)){
+                        printf("Record successfully entered\n");
+                    }else{
+
+                        printf("Record creation failed\n");
+                    }
                     break;
 
                 case 2:
-                    printf("Beep!\n");
+                    read_all();
                     break;
 
                 case 3:
