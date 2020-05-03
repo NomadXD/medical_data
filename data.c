@@ -31,20 +31,78 @@ return 1;
 
 void read_all()
 {
-    char line[200];
+    char line[400];
     FILE  *read_file;
 
     read_file = fopen("data.txt", "r");
-    if (read_file == NULL)
-        return -1;
+    if (read_file == NULL){
+        printf("No records\n");
+    }else{
 
-    Record record;
+        Record record;
 
-    while (fgets(line, sizeof(line), read_file) != NULL)
-    {
-        sscanf(line,"%s%s%s%s%s%s%s%s%s",record.username, record.first_name, record.last_name, record.nic, record.telephone, record.sickness, record.sickness_detail, record.medical_prescription, record.test_prescription);
-        printf("%s | %s | %s | %s | %s | %s | %s | %s | %s\n",record.username, record.first_name, record.last_name, record.nic, record.telephone, record.sickness, record.sickness_detail, record.medical_prescription, record.test_prescription);
+        while (fgets(line, sizeof(line), read_file) != NULL)
+        {
+            sscanf(line,"%s%s%s%s%s%s%s%s%s",record.username, record.first_name, record.last_name, record.nic, record.telephone, record.sickness, record.sickness_detail, record.medical_prescription, record.test_prescription);
+            printf("%s | %s | %s | %s | %s | %s | %s | %s | %s\n",record.username, record.first_name, record.last_name, record.nic, record.telephone, record.sickness, record.sickness_detail, record.medical_prescription, record.test_prescription);
+
+        }
+        fclose(read_file);
+    }
+
+
+}
+
+void read_pharmacist()
+{
+    char line[400];
+    FILE  *read_file;
+
+    read_file = fopen("data.txt", "r");
+    if (read_file == NULL){
+        printf("No records\n");
+    }else{
+
+        Record _record;
+
+        while (fgets(line, sizeof(line), read_file) != NULL)
+        {
+
+            sscanf(line,"%s%s%s%s%s%s%s%s%s",_record.username, _record.first_name, _record.last_name, _record.nic, _record.telephone, _record.sickness, _record.sickness_detail, _record.medical_prescription, _record.test_prescription);
+            printf("%s | %s | %s\n",_record.username, _record.sickness,_record.medical_prescription);
+
+        }
+        fclose(read_file);
 
     }
-    fclose(read_file);
+
+}
+
+
+void read_lab()
+{
+
+    char line[400];
+    FILE  *read_file;
+
+    read_file = fopen("data.txt", "r");
+    if (read_file == NULL){
+        printf("No records\n");
+    }else{
+
+        Record record;
+
+        while (fgets(line, sizeof(line), read_file) != NULL)
+        {
+            sscanf(line,"%s%s%s%s%s%s%s%s%s",record.username, record.first_name, record.last_name, record.nic, record.telephone, record.sickness, record.sickness_detail, record.medical_prescription, record.test_prescription);
+            printf("%s | %s | %s\n",record.username, record.sickness,record.test_prescription);
+
+        }
+        fclose(read_file);
+
+
+    }
+
+
+
 }

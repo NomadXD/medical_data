@@ -11,5 +11,7 @@ int create_medical_report(char* username, char* first_name, char* last_name, cha
                             char* drug_prescription, char* test_prescription)
 
 void read_all()
+void read_pharmacist()
+void read_lab()
 
 #endif /* FOO_DOT_H */

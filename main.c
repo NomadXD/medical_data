@@ -118,19 +118,19 @@ int main(void)
                 if(login(username_provided, password_provided) == 1){
                     status = 1;
                     printf("Welcome %s .You have logged in as a doctor.\n",username_provided);
-                    options(status);
+                    options(status, username_provided);
                 }else if (login(username_provided, password_provided) == 2){
                     status = 2;
                     printf("Welcome %s .You have logged in as a patient.\n",username_provided);
-                    options(status);
+                    options(status, username_provided);
                 }else if(login(username_provided, password_provided) == 3){
                     status = 3;
                     printf("Welcome %s .You have logged in as a pharmacist.\n",username_provided);
-                    options(status);
+                    options(status, username_provided);
                 }else if(login(username_provided, password_provided) == 4){
                     status = 4;
                     printf("Welcome %s .You have logged in as a Lab Technician.\n",username_provided);
-                    options(status);
+                    options(status, username_provided);
                 }else if(login(username_provided, password_provided) == 5){
                     printf("Invalid password for the username %s\n", username_provided);
                 }else{
@@ -148,7 +148,7 @@ int main(void)
 
 }
 
-void options(int status) {
+void options(int status,char* username) {
 
     do {
         optionsMenu(status);
@@ -158,7 +158,6 @@ void options(int status) {
 
                 case 1:;
                     Record record;
-                    printf("doc!\n");
                     printf("Please provide the required details.....\n");
                     printf("Username of the patient: ");
                     scanf("%s",record.username);
@@ -188,6 +187,7 @@ void options(int status) {
 
                 case 2:
                     read_all();
+                    printf("read call called");
                     break;
 
                 case 3:
@@ -227,7 +227,7 @@ void options(int status) {
             switch(choice2){
 
                     case 1:
-                        printf("pahr!\n");
+                        read_pharmacist();
                         break;
 
                     case 2:
@@ -248,8 +248,8 @@ void options(int status) {
 
             switch(choice2){
 
-                    case 1:
-                        printf("lab!\n");
+                    case 1:;
+                        read_lab();
                         break;
 
                     case 2:
