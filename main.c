@@ -4,12 +4,6 @@
 #include "account.h"
 #include "data.h"
 
-typedef struct Person{
-    char name[20];
-    char address[30];
-    char phone[20];
-} Person;
-
 typedef struct Account{
     char accountType[15];
     char username[31];
@@ -38,19 +32,11 @@ int choice2 = 3;
 
 int main(void)
  {
-
-    //signup("xxxxxx","password","Doctor");
-    //login();
-
     menu();
-
-
 
     return 0;
 
-
  }
-
 
 
  void menu(){
@@ -64,11 +50,6 @@ int main(void)
                 Account _account;
                 int type;
                 printf("Please provide the required details for registration\n");
-                printf("*** SELECT A USERNAME ***\n");
-                printf("Only alphanumeric characters and _ are allowed.\n");
-                printf("No spaces are allowed. Use _ for multiple words\n");
-                printf("Username: ");
-                scanf("%s",_account.username);
                 printf("*** SELECT AN ACCOUNT TYPE ***\n");
                 printf("Account types => | Doctor = 1 | | Patient = 2 | | Pharmacist = 3 | | Lab Technician = 4 | \n");
                 printf("Account type: ");
@@ -79,7 +60,6 @@ int main(void)
                     scanf("%d",&type);
                     printf("Account type: ");
                 }
-                printf("%d",type);
                 if(type == 1){
                     strcpy(_account.accountType,"Doctor");
                     strcpy(_account.privilegeLevel,"1");
@@ -94,6 +74,11 @@ int main(void)
                     strcpy(_account.privilegeLevel,"4");
                 }
                 type = 0;
+                printf("*** SELECT A USERNAME ***\n");
+                printf("Only alphanumeric characters and _ are allowed.\n");
+                printf("No spaces are allowed. Use _ for multiple words\n");
+                printf("Username: ");
+                scanf("%s",_account.username);
                 printf("*** SELECT A PASSWORD ***\n");
                 printf("Password: ");
                 scanf("%s", _account.password);
@@ -190,6 +175,13 @@ void options(int status,char* username) {
                     printf("read call called");
                     break;
 
+                case 4:
+                    read_all_pharmacist();
+                    break;
+
+                case 5:
+                    read_all_lab();
+
                 case 3:
                     break;
 
@@ -208,7 +200,7 @@ void options(int status,char* username) {
                         break;
 
                     case 2:
-                        printf("Beep!\n");
+                        read_doctor();
                         break;
 
                     case 3:
@@ -220,8 +212,6 @@ void options(int status,char* username) {
 
             }
 
-
-
         }else if (status == 3){
 
             switch(choice2){
@@ -231,7 +221,7 @@ void options(int status,char* username) {
                         break;
 
                     case 2:
-                        printf("Beep!\n");
+                        read_doctor();
                         break;
 
                     case 3:
@@ -253,7 +243,7 @@ void options(int status,char* username) {
                         break;
 
                     case 2:
-                        printf("Beep!\n");
+                        read_doctor();
                         break;
 
                     case 3:
@@ -267,9 +257,6 @@ void options(int status,char* username) {
 
 
         }
-
-
-
 
     } while(choice2 != 3);
 
@@ -297,6 +284,8 @@ void optionsMenu(int status) {
         printf("Options Menu\n");
         printf("1 - Add patient data\n");
         printf("2 - View patient data\n");
+        printf("4 - View pharmacists\n");
+        printf("5 - View lab technicians\n");
         printf("3 - Log out\n");
 
     }else if (status == 2){
@@ -311,14 +300,14 @@ void optionsMenu(int status) {
         printf("Options Menu\n");
         printf("1 - View Medical prescriptons\n");
         printf("2 - View Regsitered doctots\n");
-        printf("3 - Back\n");
+        printf("3 - Log out\n");
 
     }else if (status == 4){
 
         printf("Options Menu\n");
         printf("1 - View Lab test prescriptons\n");
         printf("2 - View Regsitered doctots\n");
-        printf("3 - Back\n");
+        printf("3 - Log out\n");
 
     }
 

@@ -45,7 +45,7 @@ int login(char* username, char* password)
     int isValid = 0;
     FILE  *read_file;
 
-    read_file = fopen("test.txt", "r");
+    read_file = fopen("config.txt", "r");
     if (read_file == NULL)
         return -1;
 
@@ -77,7 +77,7 @@ int login(char* username, char* password)
 int signup(char* username, char* password, char* usertype, char* privilege)
 {
 FILE *fp;
-fp=fopen("test.txt", "a");
+fp=fopen("config.txt", "a");
 if(fp == NULL)
     exit(-1);
 
@@ -85,6 +85,104 @@ char *hashedPassword = str2md5(password, strlen(password));
 fprintf(fp,"%-15s%-15s%-15s%-15s\n", username, usertype, privilege, hashedPassword);
 fclose(fp);
 return 1;
+
+}
+
+void read_doctor()
+{
+
+char line[200];
+FILE  *read_file;
+read_file = fopen("config.txt", "r");
+if (read_file == NULL){
+    printf("No records\n");
+}else{
+
+    Account account;
+    int not_found = 1;
+    while (fgets(line, sizeof(line), read_file) != NULL)
+    {
+        char privilege[1];
+        sscanf(line,"%s%s%s%s",account.username, account.accountType, privilege, account.password);
+
+        if(!strcmp("Doctor",account.accountType)){
+            printf("%s", account.username);
+            not_found = 0;
+        }
+
+    }
+    if(not_found){
+        printf("No doctors registered\n");
+    }
+    fclose(read_file);
+
+}
+
+}
+
+
+void read_all_lab()
+{
+
+char line[200];
+FILE  *read_file;
+read_file = fopen("config.txt", "r");
+if (read_file == NULL){
+    printf("No records\n");
+}else{
+
+    Account account;
+    int not_found = 1;
+    while (fgets(line, sizeof(line), read_file) != NULL)
+    {
+        char privilege[1];
+        sscanf(line,"%s%s%s%s",account.username, account.accountType, privilege, account.password);
+
+        if(!strcmp("Lab",account.accountType)){
+            printf("%s", account.username);
+            not_found = 0;
+        }
+
+    }
+    if(not_found){
+        printf("No Lab technicians registered\n");
+    }
+    fclose(read_file);
+
+}
+
+}
+
+
+void read_all_pharmacist()
+{
+
+char line[200];
+FILE  *read_file;
+read_file = fopen("config.txt", "r");
+if (read_file == NULL){
+    printf("No records\n");
+}else{
+
+    Account account;
+    int not_found = 1;
+    while (fgets(line, sizeof(line), read_file) != NULL)
+    {
+        char privilege[1];
+        sscanf(line,"%s%s%s%s",account.username, account.accountType, privilege, account.password);
+
+        if(!strcmp("Pharmacist",account.accountType)){
+            printf("%s", account.username);
+            not_found = 0;
+        }
+
+    }
+    if(not_found){
+        printf("No Pharmacsits registered\n");
+    }
+    fclose(read_file);
+
+}
 
 }
 

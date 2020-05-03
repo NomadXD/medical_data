@@ -1,0 +1,5 @@
+harsha@dr      kasun@97       kasun          madusara       973145678v     0345678987     covid19        critical                      remdesivir                    PCR                           
+harsha@dr      roxana         roxana         mihailesu      973156789v     0772456765     fever          recovering                    panadol                       temp_check                    
+harsha@dr      roxana         roxana         mihailesu      973156789v     0772456765     AIDS           initial_stage                 rest                          FBC                           
+nuwan_rxa      kasun@97       kasun          madusara       975678345v     0875678345     asthma         severe                        seretide250                   nebulize                      
+nuwan_rxa      sahan@cmb      sahan          gurusinghe     986745645v     0997856765     brain_damage   critical                      surgery                       FBC                           
