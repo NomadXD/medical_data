@@ -177,7 +177,7 @@ void options(int status,char* username) {
                     scanf("%s", record.medical_prescription);
                     printf("Test prescription:");
                     scanf("%s",record.test_prescription);
-                    if(create_medical_report(record.username,record.first_name,record.last_name,record.nic,record.telephone,record.sickness,record.sickness_detail,record.medical_prescription,record.test_prescription)){
+                    if(create_medical_report(username,record.username,record.first_name,record.last_name,record.nic,record.telephone,record.sickness,record.sickness_detail,record.medical_prescription,record.test_prescription)){
                         printf("Record successfully entered\n");
                     }else{
 
@@ -186,7 +186,7 @@ void options(int status,char* username) {
                     break;
 
                 case 2:
-                    read_all();
+                    read_all(username);
                     printf("read call called");
                     break;
 
@@ -204,7 +204,7 @@ void options(int status,char* username) {
             switch(choice2){
 
                     case 1:
-                        printf("pat!\n");
+                        read_patient(username);
                         break;
 
                     case 2:

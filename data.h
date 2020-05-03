@@ -10,8 +10,10 @@
 int create_medical_report(char* username, char* first_name, char* last_name, char* nic, char* telephone_num, char* sickness_name, char* sickness_details,
                             char* drug_prescription, char* test_prescription)
 
-void read_all()
+
+void read_all(char* username)
 void read_pharmacist()
 void read_lab()
+void read_patient(char* username)
 
 #endif /* FOO_DOT_H */
